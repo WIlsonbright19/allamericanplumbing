@@ -63,7 +63,7 @@ export const ImageLoadingState: React.FC<ImageLoadingStateProps> = ({
         alt={alt !== undefined ? alt : image.alt}
         width={imgWidth}
         height={imgHeight}
-        loading="lazy"
+        loading="eager"
         decoding="async"
         onLoad={() => setIsLoaded(true)}
         onError={() => setError(true)}

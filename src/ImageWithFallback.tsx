@@ -14,7 +14,7 @@ export const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
   image,
   alt,
   className = '',
-  loading = 'lazy',
+  loading = 'eager',
   radius = '8px',
   style = {},
 }) => {

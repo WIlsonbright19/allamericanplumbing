@@ -549,18 +549,21 @@ export default function App() {
   const reviews = [
     {
       stars: '★★★★★',
-      text: '[REVIEW TEXT]',
-      author: '[FIRST NAME], [NEIGHBORHOOD]',
+      text: '“Robert and his team always go above and beyond…”',
+      author: 'Enrique Finol',
+      source: 'Google review',
     },
     {
       stars: '★★★★★',
-      text: '[REVIEW TEXT]',
-      author: '[FIRST NAME], [NEIGHBORHOOD]',
+      text: '“They always do things right the first time…”',
+      author: 'Sami Shaio',
+      source: 'Google review',
     },
     {
       stars: '★★★★★',
-      text: '[REVIEW TEXT]',
-      author: '[FIRST NAME], [NEIGHBORHOOD]',
+      text: '“10 o’clock on a Friday night he installed a new water heater…”',
+      author: 'william pierce',
+      source: 'Google review',
     },
   ];
 
@@ -1481,10 +1484,6 @@ export default function App() {
                     className="text-left flex flex-col items-start relative pl-[28px] sm:pl-[34px] md:pl-0"
                   >
                     <motion.div
-                      initial={reducedMotion ? { clipPath: 'inset(0% 0 0 0)' } : { clipPath: 'inset(100% 0 0 0)' }}
-                      whileInView={{ clipPath: 'inset(0% 0 0 0)' }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{ duration: 0.8, ease: EASE }}
                       className="w-full rounded-[8px] overflow-hidden bg-[#f4f4f4] aspect-[4/3] mb-[12px] md:mb-[18px] group"
                     >
                       <ImageWithFallback
@@ -1642,16 +1641,24 @@ export default function App() {
                   className="bg-[#ffffff] border border-[#e5e7eb] rounded-[8px] p-[20px] flex flex-col justify-between text-left min-h-[180px] transition-colors duration-300 hover:border-[#1a1a1a]"
                 >
                   <div>
-                    <div className="text-[15px] leading-none text-[#1a1a1a] tracking-[2px] mb-[10px]">
+                    <div
+                      aria-label="5 out of 5 stars"
+                      className="text-[15px] leading-none text-[#1a1a1a] tracking-[2px] mb-[10px]"
+                    >
                       {rev.stars}
                     </div>
                     <p className="text-[14px] sm:text-[15px] leading-[1.65] tracking-[-0.01em] text-[#1a1a1a] font-normal mb-[18px] text-left">
                       {rev.text}
                     </p>
                   </div>
-                  <p className="text-[13px] leading-[20px] text-[#767676] font-normal text-left">
-                    {rev.author}
-                  </p>
+                  <div className="flex items-center justify-between gap-[12px]">
+                    <p className="text-[13px] leading-[20px] text-[#767676] font-normal text-left">
+                      {rev.author}
+                    </p>
+                    <span className="text-[12px] leading-[18px] text-[#767676] font-normal">
+                      {rev.source}
+                    </span>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -1668,16 +1675,24 @@ export default function App() {
                   className="snap-start shrink-0 w-[84%] bg-[#ffffff] border border-[#e5e7eb] rounded-[8px] p-[16px] flex flex-col justify-between text-left min-h-[170px]"
                 >
                   <div>
-                    <div className="text-[14px] leading-none text-[#1a1a1a] tracking-[2px] mb-[10px]">
+                    <div
+                      aria-label="5 out of 5 stars"
+                      className="text-[14px] leading-none text-[#1a1a1a] tracking-[2px] mb-[10px]"
+                    >
                       {rev.stars}
                     </div>
                     <p className="text-[13px] sm:text-[14px] leading-[1.6] tracking-[-0.01em] text-[#1a1a1a] font-normal mb-[16px] text-left">
                       {rev.text}
                     </p>
                   </div>
-                  <p className="text-[12px] sm:text-[13px] leading-[18px] text-[#767676] font-normal text-left">
-                    {rev.author}
-                  </p>
+                  <div className="flex items-center justify-between gap-[12px]">
+                    <p className="text-[12px] sm:text-[13px] leading-[18px] text-[#767676] font-normal text-left">
+                      {rev.author}
+                    </p>
+                    <span className="text-[11px] sm:text-[12px] leading-[18px] text-[#767676] font-normal">
+                      {rev.source}
+                    </span>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -1731,10 +1746,6 @@ export default function App() {
                 className="md:col-span-2 lg:col-span-8 flex flex-col text-left group"
               >
                 <motion.div
-                  initial={reducedMotion ? { clipPath: 'inset(0% 0 0 0)' } : { clipPath: 'inset(100% 0 0 0)' }}
-                  whileInView={{ clipPath: 'inset(0% 0 0 0)' }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.8, ease: EASE }}
                   className="w-full rounded-[8px] overflow-hidden bg-[#f4f4f4] aspect-[16/10]"
                 >
                   <ImageWithFallback
@@ -1753,10 +1764,6 @@ export default function App() {
                 className="md:col-span-1 lg:col-span-4 flex flex-col text-left group"
               >
                 <motion.div
-                  initial={reducedMotion ? { clipPath: 'inset(0% 0 0 0)' } : { clipPath: 'inset(100% 0 0 0)' }}
-                  whileInView={{ clipPath: 'inset(0% 0 0 0)' }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.8, delay: 0.08, ease: EASE }}
                   className="w-full rounded-[8px] overflow-hidden bg-[#f4f4f4] aspect-[4/3]"
                 >
                   <ImageWithFallback
@@ -1775,11 +1782,7 @@ export default function App() {
                 className="md:col-span-1 lg:col-span-4 flex flex-col text-left group"
               >
                 <motion.div
-                  initial={reducedMotion ? { clipPath: 'inset(0% 0 0 0)' } : { clipPath: 'inset(100% 0 0 0)' }}
-                  whileInView={{ clipPath: 'inset(0% 0 0 0)' }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.8, delay: 0.12, ease: EASE }}
-                  className="w-full rounded-[8px] overflow-hidden bg-[#f4f4f4] aspect-[3/4]"
+                  className="w-full rounded-[8px] overflow-hidden bg-[#f4f4f4] aspect-[4/3]"
                 >
                   <ImageWithFallback
                     image={recentWorks[2].image}
@@ -1797,11 +1800,7 @@ export default function App() {
                 className="md:col-span-1 lg:col-span-4 flex flex-col text-left group"
               >
                 <motion.div
-                  initial={reducedMotion ? { clipPath: 'inset(0% 0 0 0)' } : { clipPath: 'inset(100% 0 0 0)' }}
-                  whileInView={{ clipPath: 'inset(0% 0 0 0)' }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.8, delay: 0.16, ease: EASE }}
-                  className="w-full rounded-[8px] overflow-hidden bg-[#f4f4f4] aspect-[1/1]"
+                  className="w-full rounded-[8px] overflow-hidden bg-[#f4f4f4] aspect-[4/3]"
                 >
                   <ImageWithFallback
                     image={recentWorks[3].image}
@@ -1819,11 +1818,7 @@ export default function App() {
                 className="md:col-span-1 lg:col-span-4 flex flex-col text-left group"
               >
                 <motion.div
-                  initial={reducedMotion ? { clipPath: 'inset(0% 0 0 0)' } : { clipPath: 'inset(100% 0 0 0)' }}
-                  whileInView={{ clipPath: 'inset(0% 0 0 0)' }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
-                  className="w-full rounded-[8px] overflow-hidden bg-[#f4f4f4] aspect-[16/9]"
+                  className="w-full rounded-[8px] overflow-hidden bg-[#f4f4f4] aspect-[4/3]"
                 >
                   <ImageWithFallback
                     image={recentWorks[4].image}

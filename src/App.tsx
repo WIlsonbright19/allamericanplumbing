@@ -548,22 +548,19 @@ export default function App() {
 
   const reviews = [
     {
-      stars: '★★★★★',
-      text: '“Robert and his team always go above and beyond…”',
-      author: 'Enrique Finol',
-      source: 'Google review',
+      title: 'Excellent Service!',
+      text: 'The team was professional, punctual, and efficient. They quickly identified the plumbing issue and explained everything clearly. Great experience from start to finish!',
+      author: 'Demo Customer 01',
     },
     {
-      stars: '★★★★★',
-      text: '“They always do things right the first time…”',
-      author: 'Sami Shaio',
-      source: 'Google review',
+      title: 'Reliable and Professional',
+      text: 'From the first call to the completed repair, communication was excellent. The work was handled carefully, and everything was left clean and tidy. Highly recommended!',
+      author: 'Demo Customer 02',
     },
     {
-      stars: '★★★★★',
-      text: '“10 o’clock on a Friday night he installed a new water heater…”',
-      author: 'william pierce',
-      source: 'Google review',
+      title: 'Quality Work, Great Experience',
+      text: 'I appreciated the clear pricing, friendly service, and attention to detail. The plumbing problem was resolved efficiently, and the whole process was stress-free.',
+      author: 'Demo Customer 03',
     },
   ];
 
@@ -1616,83 +1613,55 @@ export default function App() {
           <div className="max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[36px] lg:px-[48px]">
             <div className="mb-[28px] sm:mb-[36px] md:mb-[44px] text-left overflow-hidden">
               <h2 className="text-[26px] sm:text-[34px] md:text-[44px] lg:text-[56px] leading-[1.08] tracking-[-0.038em] font-medium text-[#1a1a1a]">
-                <motion.span
-                  initial={reducedMotion ? { y: 0 } : { y: '105%' }}
-                  whileInView={{ y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  animate={replaySection === 'reviews' ? { y: [16, 0], opacity: [0, 1] } : undefined}
-                  transition={{ duration: 0.8, ease: EASE }}
-                  className="block"
-                >
+                <span className="block">
                   Customer reviews.
-                </motion.span>
+                </span>
               </h2>
+              <p className="mt-[12px] text-[13px] sm:text-[14px] leading-[1.6] text-[#767676]">
+                Sample testimonials for preview.
+              </p>
             </div>
 
             {/* Tablet & Desktop 3-column review grid */}
             <div className="hidden md:grid grid-cols-3 gap-[20px] mb-[28px]">
-              {reviews.map((rev, i) => (
+              {reviews.map((review, i) => (
                 <motion.div
                   key={i}
-                  initial={reducedMotion ? { clipPath: 'inset(0% 0 0 0)' } : { clipPath: 'inset(100% 0 0 0)' }}
-                  whileInView={{ clipPath: 'inset(0% 0 0 0)' }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.8, delay: i * 0.1, ease: EASE }}
                   className="bg-[#ffffff] border border-[#e5e7eb] rounded-[8px] p-[20px] flex flex-col justify-between text-left min-h-[180px] transition-colors duration-300 hover:border-[#1a1a1a]"
                 >
                   <div>
-                    <div
-                      aria-label="5 out of 5 stars"
-                      className="text-[15px] leading-none text-[#1a1a1a] tracking-[2px] mb-[10px]"
-                    >
-                      {rev.stars}
-                    </div>
-                    <p className="text-[14px] sm:text-[15px] leading-[1.65] tracking-[-0.01em] text-[#1a1a1a] font-normal mb-[18px] text-left">
-                      {rev.text}
-                    </p>
+                    <h3 className="text-[16px] sm:text-[17px] leading-[1.4] tracking-[-0.02em] text-[#1a1a1a] font-medium text-left mb-[10px]">
+                      {review.title}
+                    </h3>
+                    <blockquote className="text-[14px] sm:text-[15px] leading-[1.65] tracking-[-0.01em] text-[#1a1a1a] font-normal text-left">
+                      “{review.text}”
+                    </blockquote>
                   </div>
-                  <div className="flex items-center justify-between gap-[12px]">
-                    <p className="text-[13px] leading-[20px] text-[#767676] font-normal text-left">
-                      {rev.author}
-                    </p>
-                    <span className="text-[12px] leading-[18px] text-[#767676] font-normal">
-                      {rev.source}
-                    </span>
-                  </div>
+                  <cite className="mt-[18px] not-italic text-[13px] leading-[20px] text-[#767676] font-normal text-left">
+                    {review.author}
+                  </cite>
                 </motion.div>
               ))}
             </div>
 
             {/* Mobile horizontal snap review slider */}
             <div className="md:hidden flex gap-[14px] overflow-x-auto snap-x-mandatory no-scrollbar pb-[12px] mb-[20px]">
-              {reviews.map((rev, i) => (
+              {reviews.map((review, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.5, delay: i * 0.08, ease: EASE }}
                   className="snap-start shrink-0 w-[84%] bg-[#ffffff] border border-[#e5e7eb] rounded-[8px] p-[16px] flex flex-col justify-between text-left min-h-[170px]"
                 >
                   <div>
-                    <div
-                      aria-label="5 out of 5 stars"
-                      className="text-[14px] leading-none text-[#1a1a1a] tracking-[2px] mb-[10px]"
-                    >
-                      {rev.stars}
-                    </div>
-                    <p className="text-[13px] sm:text-[14px] leading-[1.6] tracking-[-0.01em] text-[#1a1a1a] font-normal mb-[16px] text-left">
-                      {rev.text}
-                    </p>
+                    <h3 className="text-[15px] leading-[1.4] tracking-[-0.02em] text-[#1a1a1a] font-medium text-left mb-[8px]">
+                      {review.title}
+                    </h3>
+                    <blockquote className="text-[13px] sm:text-[14px] leading-[1.6] tracking-[-0.01em] text-[#1a1a1a] font-normal text-left">
+                      “{review.text}”
+                    </blockquote>
                   </div>
-                  <div className="flex items-center justify-between gap-[12px]">
-                    <p className="text-[12px] sm:text-[13px] leading-[18px] text-[#767676] font-normal text-left">
-                      {rev.author}
-                    </p>
-                    <span className="text-[11px] sm:text-[12px] leading-[18px] text-[#767676] font-normal">
-                      {rev.source}
-                    </span>
-                  </div>
+                  <cite className="mt-[16px] not-italic text-[12px] sm:text-[13px] leading-[18px] text-[#767676] font-normal text-left">
+                    {review.author}
+                  </cite>
                 </motion.div>
               ))}
             </div>
@@ -1704,7 +1673,7 @@ export default function App() {
                 rel="noopener noreferrer"
                 className="animated-link text-[14px] sm:text-[15px] leading-[1.7] text-[#1a1a1a] hover:text-[#0000ee] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0000ee]"
               >
-                Read more reviews on Google
+                Read customer reviews on Google
               </a>
             </div>
           </div>
